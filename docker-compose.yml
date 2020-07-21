@@ -1,8 +1,7 @@
 version: "2.4"
 services:
   node:
-    build: .
-    #image: registry.packages.tiredpixel.com/base/cardano-node-build:head
+    image: registry.packages.tiredpixel.com/base/cardano-node-build:head
     networks:
       - node
 networks:

@@ -3,4 +3,5 @@
 /docker-compose.*.yml
 
 # Haskell
-/dist/
+dist/
+dist-newstyle/
