@@ -1,12 +1,8 @@
 version: "2.4"
 services:
   node:
-    image: registry.packages.tiredpixel.com/base/cardano-node-build:head
-    #volumes:
-    #  - ./isx-plugin-crawler-html.cabal:/home/x/repo/isx-plugin-crawler-html.cabal
-    #  - ./lib:/home/x/repo/lib
-    #  - ./src:/home/x/repo/src
-    #  - ./test:/home/x/repo/test
+    build: .
+    #image: registry.packages.tiredpixel.com/base/cardano-node-build:head
     networks:
       - node
 networks:

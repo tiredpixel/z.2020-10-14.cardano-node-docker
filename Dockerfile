@@ -7,33 +7,59 @@ ARG HOME=/home/x
 #-------------------------------------------------------------------------------
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-        daemontools && \
+        autoconf \
+        automake \
+        build-essential \
+        daemontools \
+        g++ \
+        git \
+        jq \
+        libffi-dev \
+        libgmp-dev \
+        libncursesw5 \
+        libssl-dev \
+        libsystemd-dev \
+        libtinfo-dev \
+        libtool \
+        make \
+        pkg-config \
+        tmux \
+        wget \
+        zlib1g-dev && \
     rm -rf /var/lib/apt/lists/*
 
 RUN useradd ${USER} -d ${HOME} && \
     mkdir -p ${HOME}/repo && \
     chown -R ${USER}:${USER} ${HOME}
 #-------------------------------------------------------------------------------
-USER ${USER}
-
 WORKDIR ${HOME}/repo
 
+COPY --chown=x:x lib/ ./lib/
+#-------------------------------------------------------------------------------
+USER ${USER}
+
+WORKDIR ${HOME}/repo/lib/libsodium
+
+RUN ./autogen.sh && \
+    ./configure && \
+    make
+#-------------------------------------------------------------------------------
+USER root
+
+RUN make install
+#-------------------------------------------------------------------------------
+USER ${USER}
+
+WORKDIR ${HOME}/repo/lib/cardano-node
+
+ENV LD_LIBRARY_PATH /usr/local/lib:$LD_LIBRARY_PATH
+
+RUN cabal new-update && \
+    cabal new-install -j \
+        cardano-cli \
+        cardano-node
+#-------------------------------------------------------------------------------
 ENV PATH ${HOME}/.cabal/bin:$PATH
 
-COPY --chown=x:x [ \
-    "cabal.config", \
-    "*.cabal", \
-    "./"]
-
-RUN cabal v1-update && \
-    cabal v1-install -j --only-dependencies --enable-tests
-#-------------------------------------------------------------------------------
-#ENV ADDRESS=0.0.0.0 \
-#    PORT=8000
-#
-#CMD cabal v1-run isx-plugin-crawler-html -- -b ${ADDRESS} -p ${PORT}
-#
-#EXPOSE ${PORT}
-#
-#HEALTHCHECK CMD curl -fs http://${ADDRESS}:${PORT} || false
+CMD cardano-cli --version
 #===============================================================================
