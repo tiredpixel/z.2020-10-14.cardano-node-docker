@@ -14,6 +14,7 @@ RUN useradd ${USER} -d ${HOME} && \
     mkdir -p ${HOME}/bin && \
     chown -R ${USER}:${USER} ${HOME}
 #-------------------------------------------------------------------------------
+COPY lib/ /usr/local/lib/
 COPY bin/ ${HOME}/bin/
 COPY .version ${HOME}/.version
 #-------------------------------------------------------------------------------
