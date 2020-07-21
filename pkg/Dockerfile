@@ -22,7 +22,7 @@ USER ${USER}
 
 WORKDIR ${HOME}
 
-ENV LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+ENV LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH \
     PATH=${HOME}/bin:$PATH
 
 CMD sleep infinity
