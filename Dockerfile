@@ -52,14 +52,14 @@ USER ${USER}
 
 WORKDIR ${HOME}/repo/lib/cardano-node
 
-ENV LD_LIBRARY_PATH /usr/local/lib:$LD_LIBRARY_PATH
+ENV LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 
 RUN cabal v2-update && \
     cabal v2-install -j \
         cardano-cli \
         cardano-node
 #-------------------------------------------------------------------------------
-ENV PATH ${HOME}/.cabal/bin:$PATH
+ENV PATH=${HOME}/.cabal/bin:$PATH
 
 CMD scripts/mainnet.sh --verbose
 #===============================================================================
