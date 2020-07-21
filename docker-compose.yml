@@ -5,5 +5,4 @@ services:
     networks:
       - node
 networks:
-  node:
-    internal: true
+  node: {}
