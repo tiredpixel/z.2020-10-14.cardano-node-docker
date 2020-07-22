@@ -55,7 +55,7 @@ WORKDIR ${HOME}/repo/lib/cardano-node
 ENV LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 
 RUN cabal v2-update && \
-    cabal v2-install -j \
+    cabal v2-install -O2 -j \
         cardano-cli \
         cardano-node
 #-------------------------------------------------------------------------------
