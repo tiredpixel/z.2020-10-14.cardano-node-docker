@@ -2,11 +2,7 @@ version: "2.4"
 services:
   node:
     image: registry.packages.tiredpixel.com/base/cardano-node-build:head
-    volumes:
-      - node:${HOME}/repo/lib/cardano-node/db
     networks:
       - node
 networks:
-  node: {}
-volumes:
   node: {}

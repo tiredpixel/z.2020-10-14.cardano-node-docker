@@ -62,6 +62,4 @@ RUN cabal v2-update && \
 ENV PATH=${HOME}/.cabal/bin:$PATH
 
 CMD scripts/mainnet.sh --verbose
-
-VOLUME ${HOME}/repo/lib/cardano-node/db
 #===============================================================================
