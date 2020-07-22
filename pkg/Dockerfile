@@ -7,7 +7,9 @@ ARG HOME=/home/x
 #-------------------------------------------------------------------------------
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-        curl && \
+        ca-certificates \
+        curl \
+        netbase && \
     rm -rf /var/lib/apt/lists/*
 
 RUN useradd ${USER} -d ${HOME} && \
