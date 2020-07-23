@@ -1,0 +1,9 @@
+#!/bin/sh
+
+cardano-node run \
+    --config "$CRD_CONF/config.json" \
+    --database-path "$CRD_DATA/db" \
+    --host-addr "$ADDRESS" \
+    --port "$PORT" \
+    --socket-path "$CRD_DATA/socket/cardano-node.socket" \
+    --topology "$CRD_CONF/topology.json"

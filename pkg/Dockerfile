@@ -34,11 +34,5 @@ ENV ADDRESS=127.0.0.1 \
 
 ENV CARDANO_NODE_SOCKET_PATH=${CRD_DATA}/socket/cardano-node.socket
 
-CMD cardano-node run \
-    --config ${CRD_CONF}/config.json \
-    --database-path ${CRD_DATA}/db \
-    --host-addr ${ADDRESS} \
-    --port ${PORT} \
-    --socket-path ${CRD_DATA}/socket/cardano-node.socket \
-    --topology ${CRD_CONF}/topology.json
+CMD cardano-node-relay
 #===============================================================================
