@@ -24,7 +24,7 @@ USER ${USER}
 
 WORKDIR ${HOME}
 
-ENV ADDRESS=localhost \
+ENV ADDRESS=:: \
     PORT=3001 \
     LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH \
     PATH=${HOME}/bin:$PATH \
