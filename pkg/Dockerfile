@@ -24,8 +24,19 @@ USER ${USER}
 
 WORKDIR ${HOME}
 
-ENV LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH \
-    PATH=${HOME}/bin:$PATH
+ENV ADDRESS=localhost \
+    PORT=3001 \
+    LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH \
+    PATH=${HOME}/bin:$PATH \
+    CRD_CONF=/etc/cardano \
+    CRD_DATA=/var/lib/cardano \
+    CARDANO_NODE_SOCKET_PATH=${CRD_DATA}/socket/cardano-node.socket
 
-CMD sleep infinity
+CMD cardano-node run \
+    --config ${CRD_CONF}/config.json \
+    --database-path ${CRD_DATA}/db \
+    --host-addr ${ADDRESS} \
+    --port ${PORT} \
+    --socket-path ${CRD_DATA}/socket/cardano-node.socket \
+    --topology ${CRD_CONF}/topology.json
 #===============================================================================

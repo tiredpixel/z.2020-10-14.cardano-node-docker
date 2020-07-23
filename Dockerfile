@@ -59,7 +59,8 @@ RUN cabal v2-update && \
         cardano-cli \
         cardano-node
 #-------------------------------------------------------------------------------
-ENV PATH=${HOME}/.cabal/bin:$PATH
+ENV PATH=${HOME}/.cabal/bin:$PATH \
+    CARDANO_NODE_SOCKET_PATH=/var/lib/cardano/socket/cardano-node.socket
 
 CMD scripts/mainnet.sh --verbose
 #===============================================================================
