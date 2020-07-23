@@ -25,8 +25,7 @@ USER ${USER}
 
 WORKDIR ${HOME}
 
-ENV ADDRESS=127.0.0.1 \
-    PORT=3001 \
+ENV PORT=3001 \
     LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH \
     PATH=${HOME}/bin:$PATH \
     CRD_CONF=/etc/cardano \
