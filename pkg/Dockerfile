@@ -19,6 +19,7 @@ RUN useradd ${USER} -d ${HOME} && \
 COPY lib/ /usr/local/lib/
 COPY bin/ ${HOME}/bin/
 COPY .version ${HOME}/.version
+COPY bin/.bashrc ${HOME}/.bashrc
 #-------------------------------------------------------------------------------
 USER ${USER}
 
