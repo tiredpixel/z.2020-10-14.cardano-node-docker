@@ -13,5 +13,5 @@ cardano-node run \
     --database-path "$CRD_DATA/db" \
     "${host_addr_[@]}" \
     --port "$PORT" \
-    --socket-path "$CRD_DATA/socket/cardano-node.socket" \
+    --socket-path /var/run/cardano-node.socket \
     --topology "$CRD_CONF/topology.json"
