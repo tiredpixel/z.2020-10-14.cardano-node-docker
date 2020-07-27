@@ -31,7 +31,7 @@ ENV PORT=3001 \
     CRD_CONF=/etc/cardano \
     CRD_DATA=/var/lib/cardano
 
-ENV CARDANO_NODE_SOCKET_PATH=/var/run/cardano-node.socket
+ENV CARDANO_NODE_SOCKET_PATH=${CRD_DATA}/socket/cardano-node.socket
 
 CMD cardano-node-relay
 #===============================================================================
