@@ -5,3 +5,6 @@
 # Haskell
 dist/
 dist-newstyle/
+
+# Cardano
+/mnt/
