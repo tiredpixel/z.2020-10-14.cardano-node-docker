@@ -10,7 +10,8 @@ RUN apt-get update && \
         ca-certificates \
         curl \
         jq \
-        netbase && \
+        netbase \
+        wget && \
     rm -rf /var/lib/apt/lists/*
 
 RUN useradd ${USER} -d ${HOME} && \
