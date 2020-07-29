@@ -3,7 +3,6 @@ services:
   node:
     image: registry.packages.tiredpixel.com/base/cardano-node:head
     volumes:
-      - ./mnt/etc/cardano:/etc/cardano:ro
       - ./mnt/var/lib/cardano:/var/lib/cardano
     networks:
       - node
