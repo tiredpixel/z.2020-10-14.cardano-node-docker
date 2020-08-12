@@ -11,3 +11,6 @@ image/
 # Haskell
 dist/
 dist-newstyle/
+
+# Cardano Node
+mnt/
