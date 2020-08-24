@@ -7,25 +7,8 @@ ARG HOME=/home/x
 #-------------------------------------------------------------------------------
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-        autoconf \
-        automake \
-        build-essential \
         daemontools \
-        g++ \
-        git \
-        jq \
-        libffi-dev \
-        libgmp-dev \
-        libncursesw5 \
-        libssl-dev \
-        libsystemd-dev \
-        libtinfo-dev \
-        libtool \
-        make \
-        pkg-config \
-        tmux \
-        wget \
-        zlib1g-dev && \
+        netcat && \
     rm -rf /var/lib/apt/lists/*
 
 RUN useradd ${USER} -d ${HOME} && \
@@ -66,4 +49,6 @@ ENV PORT=3001 \
 CMD cardano-node-relay
 
 EXPOSE ${PORT}
+
+HEALTHCHECK CMD cardano-node-healthcheck
 #===============================================================================

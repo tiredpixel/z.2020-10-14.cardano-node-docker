@@ -8,10 +8,8 @@ ARG HOME=/home/x
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
         ca-certificates \
-        curl \
-        jq \
         netbase \
-        wget && \
+        netcat && \
     rm -rf /var/lib/apt/lists/*
 
 RUN useradd ${USER} -d ${HOME} && \
@@ -34,4 +32,6 @@ ENV PORT=3001 \
     CARDANO_NODE_SOCKET_PATH=/var/lib/cardano/socket/cardano-node.socket
 
 CMD cardano-node-relay
+
+HEALTHCHECK CMD cardano-node-healthcheck
 #===============================================================================
