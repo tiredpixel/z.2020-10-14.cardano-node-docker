@@ -13,7 +13,8 @@ RUN apt-get update && \
         jq \
         libsystemd-dev \
         libtool \
-        netcat && \
+        netcat \
+        wget && \
     rm -rf /var/lib/apt/lists/*
 
 RUN useradd ${USER} -d ${HOME} && \
