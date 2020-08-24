@@ -56,9 +56,7 @@ COPY --chown=x:x lib/cardano-node ./
 ENV LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 
 RUN cabal v2-update && \
-    cabal v2-install -O2 -j \
-        cardano-cli \
-        cardano-node
+    cabal v2-install -O2 -j all
 #-------------------------------------------------------------------------------
 ENV PORT=3001 \
     PATH=${HOME}/repo/bin:${HOME}/.cabal/bin:$PATH \
