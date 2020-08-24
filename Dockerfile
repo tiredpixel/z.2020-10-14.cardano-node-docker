@@ -62,8 +62,12 @@ COPY --chown=x:x lib/cardano-node/cardano-node/*.cabal   ./cardano-node/
 
 ENV LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 
+#RUN cabal v2-update && \
+#    cabal v2-build -j --only-dependencies --enable-tests \
+#        cardano-cli \
+#        cardano-node
 RUN cabal v2-update && \
-    cabal v2-build -j --only-dependencies --enable-tests \
+    cabal v2-install -j \
         cardano-cli \
         cardano-node
 #-------------------------------------------------------------------------------
