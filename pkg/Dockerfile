@@ -8,6 +8,7 @@ ARG HOME=/home/x
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
         ca-certificates \
+        libgmp-dev \
         netbase \
         netcat && \
     rm -rf /var/lib/apt/lists/*
