@@ -2,19 +2,13 @@
 
 ADDRESS=${ADDRESS:-}
 #-------------------------------------------------------------------------------
-if command -v cabal >/dev/null 2>&1 ; then
-    cmd="cabal v2-run exe:cardano-node --"
-else
-    cmd="cardano-node"
-fi
-
 if [ -z "$ADDRESS" ]; then
     host_addr_=()
 else
     host_addr_=(--host-addr "$ADDRESS")
 fi
 
-$cmd run \
+cardano-node run \
     --config "$CRD_DATA/etc/config.json" \
     --database-path "$CRD_DATA/db" \
     "${host_addr_[@]}" \

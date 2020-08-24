@@ -30,8 +30,9 @@ WORKDIR ${HOME}
 ENV PORT=3001 \
     LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH \
     PATH=${HOME}/bin:$PATH \
-    CRD_DATA=/var/lib/cardano \
-    CARDANO_NODE_SOCKET_PATH=/var/lib/cardano/socket/cardano-node.socket
+    CRD_DATA=/var/lib/cardano
+
+ENV CARDANO_NODE_SOCKET_PATH=${CRD_DATA}/socket/cardano-node.socket
 
 CMD cardano-node-relay
 #===============================================================================
