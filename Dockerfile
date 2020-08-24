@@ -59,7 +59,12 @@ RUN cabal v2-update && \
         cardano-cli \
         cardano-node
 #-------------------------------------------------------------------------------
-ENV PATH=${HOME}/.cabal/bin:$PATH
+ENV PORT=3001 \
+    PATH=${HOME}/repo/bin:${HOME}/.cabal/bin:$PATH \
+    CRD_DATA=/var/lib/cardano \
+    CARDANO_NODE_SOCKET_PATH=/var/lib/cardano/socket/cardano-node.socket
 
-CMD scripts/mainnet.sh --verbose
+CMD cardano-node-relay
+
+EXPOSE ${PORT}
 #===============================================================================
