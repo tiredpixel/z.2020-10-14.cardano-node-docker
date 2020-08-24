@@ -29,16 +29,18 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 RUN useradd ${USER} -d ${HOME} && \
-    mkdir -p ${HOME}/repo && \
+    mkdir -p ${HOME}/repo/lib/cardano-node/cardano-api && \
+    mkdir -p ${HOME}/repo/lib/cardano-node/cardano-cli && \
+    mkdir -p ${HOME}/repo/lib/cardano-node/cardano-config && \
+    mkdir -p ${HOME}/repo/lib/cardano-node/cardano-node && \
+    mkdir -p ${HOME}/repo/lib/libsodium && \
     chown -R ${USER}:${USER} ${HOME}
-#-------------------------------------------------------------------------------
-WORKDIR ${HOME}/repo
-
-COPY --chown=x:x lib/ ./lib/
 #-------------------------------------------------------------------------------
 USER ${USER}
 
 WORKDIR ${HOME}/repo/lib/libsodium
+
+COPY --chown=x:x lib/libsodium ./
 
 RUN ./autogen.sh && \
     ./configure && \
@@ -52,14 +54,25 @@ USER ${USER}
 
 WORKDIR ${HOME}/repo/lib/cardano-node
 
+COPY --chown=x:x lib/cardano-node/cabal.project          ./
+COPY --chown=x:x lib/cardano-node/cardano-api/*.cabal    ./cardano-api/
+COPY --chown=x:x lib/cardano-node/cardano-cli/*.cabal    ./cardano-cli/
+COPY --chown=x:x lib/cardano-node/cardano-config/*.cabal ./cardano-config/
+COPY --chown=x:x lib/cardano-node/cardano-node/*.cabal   ./cardano-node/
+
 ENV LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 
 RUN cabal v2-update && \
-    cabal v2-install -O2 -j \
+    cabal v2-build -j --only-dependencies --enable-tests \
         cardano-cli \
         cardano-node
 #-------------------------------------------------------------------------------
-ENV PATH=${HOME}/.cabal/bin:$PATH
+ENV PORT=3001 \
+    PATH=${HOME}/repo/bin:${HOME}/.cabal/bin:$PATH \
+    CRD_DATA=/var/lib/cardano \
+    CARDANO_NODE_SOCKET_PATH=/var/lib/cardano/socket/cardano-node.socket
 
-CMD scripts/mainnet.sh --verbose
+CMD cardano-node-relay
+
+EXPOSE ${PORT}
 #===============================================================================
