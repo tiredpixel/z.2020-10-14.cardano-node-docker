@@ -18,8 +18,10 @@ RUN useradd ${USER} -d ${HOME} && \
 #-------------------------------------------------------------------------------
 COPY lib/ /usr/local/lib/
 COPY bin/ ${HOME}/bin/
-COPY .version ${HOME}/.version
-COPY bin/.bashrc ${HOME}/.bashrc
+COPY --chown=x:x [ \
+    ".version", \
+    "bin/.bashrc", \
+    "${HOME}/"]
 #-------------------------------------------------------------------------------
 USER ${USER}
 

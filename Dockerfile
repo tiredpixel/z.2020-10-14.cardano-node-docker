@@ -7,7 +7,11 @@ ARG HOME=/home/x
 #-------------------------------------------------------------------------------
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
+        autoconf \
+        automake \
         daemontools \
+        libsystemd-dev \
+        libtool \
         netcat && \
     rm -rf /var/lib/apt/lists/*
 
