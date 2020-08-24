@@ -10,6 +10,7 @@ RUN apt-get update && \
         autoconf \
         automake \
         daemontools \
+        jq \
         libsystemd-dev \
         libtool \
         netcat && \
