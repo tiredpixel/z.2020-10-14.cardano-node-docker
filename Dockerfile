@@ -33,6 +33,7 @@ RUN useradd ${USER} -d ${HOME} && \
     mkdir -p ${HOME}/repo/lib/cardano-node/cardano-cli && \
     mkdir -p ${HOME}/repo/lib/cardano-node/cardano-config && \
     mkdir -p ${HOME}/repo/lib/cardano-node/cardano-node && \
+    mkdir -p ${HOME}/repo/lib/cardano-node/cardano-node-chairman && \
     mkdir -p ${HOME}/repo/lib/libsodium && \
     chown -R ${USER}:${USER} ${HOME}
 #-------------------------------------------------------------------------------
@@ -54,11 +55,12 @@ USER ${USER}
 
 WORKDIR ${HOME}/repo/lib/cardano-node
 
-COPY --chown=x:x lib/cardano-node/cabal.project          ./
-COPY --chown=x:x lib/cardano-node/cardano-api/*.cabal    ./cardano-api/
-COPY --chown=x:x lib/cardano-node/cardano-cli/*.cabal    ./cardano-cli/
-COPY --chown=x:x lib/cardano-node/cardano-config/*.cabal ./cardano-config/
-COPY --chown=x:x lib/cardano-node/cardano-node/*.cabal   ./cardano-node/
+COPY --chown=x:x lib/cardano-node/cabal.project                 ./
+COPY --chown=x:x lib/cardano-node/cardano-api/*.cabal           ./cardano-api/
+COPY --chown=x:x lib/cardano-node/cardano-cli/*.cabal           ./cardano-cli/
+COPY --chown=x:x lib/cardano-node/cardano-config/*.cabal        ./cardano-config/
+COPY --chown=x:x lib/cardano-node/cardano-node/*.cabal          ./cardano-node/
+COPY --chown=x:x lib/cardano-node/cardano-node-chairman/*.cabal ./cardano-node-chairman/
 
 ENV LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 
