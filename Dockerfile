@@ -56,5 +56,5 @@ CMD cardano-node-relay
 
 EXPOSE ${PORT}
 
-HEALTHCHECK CMD cardano-node-healthcheck
+HEALTHCHECK --start-period=600s CMD cardano-node-healthcheck
 #===============================================================================

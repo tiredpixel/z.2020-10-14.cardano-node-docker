@@ -36,5 +36,5 @@ ENV PORT=3001 \
 
 CMD cardano-node-relay
 
-HEALTHCHECK CMD cardano-node-healthcheck
+HEALTHCHECK --start-period=600s CMD cardano-node-healthcheck
 #===============================================================================
