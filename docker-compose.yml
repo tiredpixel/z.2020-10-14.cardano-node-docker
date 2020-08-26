@@ -1,7 +1,7 @@
 version: "2.4"
 services:
   node:
-    image: registry.packages.tiredpixel.com/base/cardano-node-build:head
+    image: docker.io/tiredpixel/cardano-node-build:head
     volumes:
       - ./bin:/home/x/repo/bin
       - ./bin/.bashrc:/home/x/.bashrc
