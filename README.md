@@ -23,7 +23,7 @@ Lots of tags are written; however, only those tagged in the above format are con
 
 ## Security
 
-If you care about security, you'll very probably want to build this container image for yourself, rather than rely on what I publish to a registry. Whilst being wary of pre-compiled artefacts is always good advice, this is even more important for software with a financial incentive, such as cryptocurrency software. It is likely a matter of time before someone exploits a Cardano node by offering malicious images. Please also note that there have already been successful attacks against people in the community running stakepools with incorrectly configured orchestrator engines and firewalls. It is really very important that you are careful across all areas of your process and infrastructure, and that includes but also goes far beyond the code in these images.
+If you care about security, you'll very probably want to build this container image for yourself, rather than rely on what I publish to a registry. Whilst being wary of pre-compiled artefacts is always good advice, this is even more important for software with a financial incentive, such as cryptocurrency software. It is likely a matter of time before someone exploits a Cardano node by offering malicious images. Please also note that there have already been successful attacks against people in the community running stake pools with incorrectly configured orchestrator engines and firewalls. It is really very important that you are careful across all areas of your process and infrastructure, and that includes but also goes far beyond the code in these images.
 
 
 ## Disclaimer
