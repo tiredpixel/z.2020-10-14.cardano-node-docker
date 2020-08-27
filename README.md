@@ -28,7 +28,7 @@ If you care about security, you'll very probably want to build this container im
 
 ## Disclaimer
 
-Your particular attention is drawn to the disclaimers in the licence. For example, if this image doesn't work and causes your stake pool downtime, or there's a bug which affects your pledge or financial returns, or if a vulnerability allows it to get hacked, this is not my issue. I might be sympathetic, but it certainly isn't my fault. Please conduct your own due diligence for everything, including whether you want to use this code at all.
+Your particular attention is drawn to the disclaimers in the licence. For example, if this image doesn't work and causes your Cardano node downtime, or if there's a bug which affects your stake pool pledge or financial returns, or if a vulnerability allows it or your broader server or other software to get hacked, this is not my issue. I might be sympathetic, but it certainly isn't my fault. Please conduct your own due diligence for everything, including whether you want to use this code at all.
 
 
 ## Blessing
