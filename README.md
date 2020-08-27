@@ -9,9 +9,9 @@ If you'd like to keep up-to-date with my work across this and other projects, yo
 
 There are two images built from this repo:
 
-- build (`Dockerfile`): this is an image of dependencies, such as is suitable for development; packaged images are also constructed from this, making builds more deterministic and debuggable
+- [build](https://hub.docker.com/repository/docker/tiredpixel/cardano-node-build) (`Dockerfile`): this is an image of dependencies, such as is suitable for development; packaged images are also constructed from this, making builds more deterministic and debuggable
 
-- package (`pkg/Dockerfile`): this is an image of packaged programs, with minimal dependencies, such as is suitable for running within a deployed environment; this image requires an intermediary CI step, moving compiled binaries from the build image into this image
+- [package](https://hub.docker.com/repository/docker/tiredpixel/cardano-node) (`pkg/Dockerfile`): this is an image of packaged programs, with minimal dependencies, such as is suitable for running within a deployed environment; this image requires an intermediary CI step, moving compiled binaries from the build image into this image
 
 
 ## Versions
