@@ -22,7 +22,6 @@ RUN useradd ${USER} -d ${HOME} && \
 COPY lib/ /usr/local/lib/
 COPY bin/ ${HOME}/bin/
 COPY --chown=x:x [ \
-    ".version", \
     "bin/.bashrc", \
     "${HOME}/"]
 #-------------------------------------------------------------------------------
